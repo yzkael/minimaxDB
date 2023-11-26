@@ -5,14 +5,14 @@
     <link rel="stylesheet" href="frontEnd/style.css">
 </head>
 <body>
-    <h1>Minimax</h1>
+    <h1>Sign Up</h1>
     
     <!-- Form to add data -->
     <form action="insert.php" method="post">
         <input type="text" name="name" placeholder="Enter Name">
         <input type="password" name="pwd" placeholder="Enter Password">
         <input type="text" name="email" placeholder="Enter Email">
-        <input type="submit" value="Add Data">
+        <input type="submit" value="Sign Up">
     </form>
 
     <!-- Displaying data -->
