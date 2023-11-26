@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Web Database Example</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="frontEnd/style.css">
 </head>
 <body>
     <h1>Minimax</h1>
