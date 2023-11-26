@@ -9,7 +9,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $quantity_sold = $_POST['quantity_sold'];
     $sale_amount = $_POST['sale_amount'];
 
-    // Your logic to validate inputs and insert into 'sales' table
+    // Validate inputs (perform more rigorous validation as needed)
+    if (!empty($product_id) && !empty($user_id) && !empty($quantity_sold) && !empty($sale_amount)) {
+        // Insert sale data into 'sales' table
+        $query = "INSERT INTO sales (user_id, product_id, quantity_sold, sale_amount) VALUES (?, ?, ?, ?)";
+        $stmt = $connection->prepare($query);
+        $stmt->bind_param('iiid', $user_id, $product_id, $quantity_sold, $sale_amount);
+        
+        if ($stmt->execute()) {
+            // Redirect to a success page or display a success message
+            header('Location: sales_success.php');
+            exit;
+        } else {
+            $error = "Error occurred while registering the sale. Please try again.";
+        }
+    } else {
+        $error = "Please fill in all the fields.";
+    }
 }
 ?>
 
@@ -21,6 +37,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <h2>Register Sale</h2>
+    <?php if (isset($error)) { ?>
+        <p><?php echo $error; ?></p>
+    <?php } ?>
     <form action="register_sale.php" method="post">
         <!-- Input fields for registering a sale -->
         <!-- Assuming input fields for product_id, quantity_sold, sale_amount -->
